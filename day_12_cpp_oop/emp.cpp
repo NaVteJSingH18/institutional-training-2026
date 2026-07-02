@@ -4,8 +4,8 @@ using namespace std;
  class employee{
     public:
     string name;
-    int employee_ID=0;
-    double salary=0;
+    int employee_ID;
+    double salary;
 
     void set_details(double salary,int employee_ID,string name){
          this->salary=salary;
