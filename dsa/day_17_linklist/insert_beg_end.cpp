@@ -33,8 +33,9 @@ public:
         {
             cout << "\n1. Insert at Begin." << endl;
             cout << "\n2. Insert at End." << endl;
+            cout<< "\n4. Insert at position"<<endl; 
             cout << "\n3. Exit." << endl;
-            cout << "Enter your choice.";
+            cout << "Enter your choice." 
             cin >> ch;
             switch (ch)
             {
