@@ -33,9 +33,10 @@ public:
         {
             cout << "\n1. Insert at Begin." << endl;
             cout << "\n2. Insert at End." << endl;
-            cout<< "\n4. Insert at position"<<endl; 
             cout << "\n3. Exit." << endl;
-            cout << "Enter your choice." 
+            cout<< "\n4. Insert at position"<<endl; 
+            
+            cout << "Enter your choice." ;
             cin >> ch;
             switch (ch)
             {
@@ -71,7 +72,9 @@ public:
                 cout << temp->data << "->";
                 temp = temp->next;
             }
+
         }
+        cout<<"NULL";
     }
     void delet()
     {
@@ -82,6 +85,7 @@ public:
             cout << "\n1. delete at Begin." << endl;
             cout << "\n2. delete at End." << endl;
             cout << "\n3. Exit." << endl;
+            cout<<"\n4 delete at a position"<<endl;
             cout << "Enter your choice.";
             cin >> ch;
             switch (ch)
@@ -95,8 +99,10 @@ public:
             case 3:
                 choice3 = 'n';
                 break;
+            case 4:
+                del_at_position();
             default:
-                cout << "Invalid Choice!!";
+                cout << "Invalid Choice at del!!";
                 break;
             }
         } while (choice3 == 'y');
@@ -148,6 +154,34 @@ public:
         }
     }
 
+    void del_at_position(){
+        cout<<"enter a position"<<endl;
+        int pos;
+        cin>>pos;
+        node*temp=start;
+        if(start==NULL){
+            cout<<"linked list is empty";
+            return;
+        }
+        if(pos==1 && start->next==NULL){
+            temp=start;
+            start=NULL;
+             delete temp;
+        }else{
+        for(int i =1;i<pos-1 && temp!=NULL; i++){
+            temp=temp->next;
+        }
+        if(temp==NULL){
+            cout<<"Invalid position!!"<<endl;
+            return;
+        }
+        node*temp_del=temp->next;
+        temp->next=temp->next->next;
+        delete temp_del;
+        cout<<"node deleted"<<endl;
+        }
+    }
+
     void at_end()
     {
         int val;
@@ -168,9 +202,47 @@ public:
         {
             temp = temp->next;
         }
+
         temp->next = ptr;
         cout << "Node Inserted at End!!" << endl;
     }
+
+
+
+    void update_val(){
+    cout<<"enter previous value to update";
+    int val;
+
+    cin>>val;
+    int new_val;
+    cout<<"enter new value to update"<<endl;
+    cin>>new_val;
+
+    node*temp=start;
+    while(temp->data!=val&& temp!=NULL){
+        temp=temp->next;
+    }
+    if(temp==NULL){
+        cout<<"value not available"<<endl;
+    }
+    temp->data=new_val;
+}
+void find_size(){
+    if(start==NULL){
+        cout<<"linked list is empty";
+        return;
+    }
+
+    int count =1;
+    node*temp=start;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        count++;
+    }
+    cout<<count<<endl;
+    return ;     
+}
+
 };
 
 int main()
@@ -186,6 +258,8 @@ int main()
         cout << "\n2. Display." << endl;
         cout << "\n3. Exit." << endl;
         cout << "\n4. delete." << endl;
+        cout<<"\n5. update value"<<endl;
+        cout<<"\n6. find size of linked list"<<endl;
         cout << "Enter your choice.";
         cin >> ch;
         switch (ch)
@@ -201,6 +275,13 @@ int main()
             break;
         case 4:
             l1.delet();
+            break;
+        case 5:
+        l1.update_val();
+            break;
+        case 6:
+        l1.find_size();
+            break;
         default:
             cout << "Invalid Choice!!" << endl;
             break;
