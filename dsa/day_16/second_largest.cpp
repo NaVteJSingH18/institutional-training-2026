@@ -12,7 +12,7 @@ int sec_largest(int arr[],int n){
                 sec_max=arr[i];  
            }
         }
-        return sec_max; 
+        return sec_max;  
 }
 
 
